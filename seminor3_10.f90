@@ -3,7 +3,7 @@ program Ising2D
    integer :: nsite,i,k,im,ip,km,kp
    parameter(nsite = 10)
    integer :: TT
-   parameter(TT=30000)
+   parameter(TT=300000)
    real :: ispin(nsite,nsite),xx,ifield
    real :: AJ=1.0,B=0.0
    real :: iU0=0.0
@@ -108,15 +108,15 @@ program Ising2D
              endif
           endif   
    
-          if(try>10000) then
+          if(try>100000) then
               U = U + deltaU
               totalU = totalU + U
               total2U = total2U + U * U 
             
           endif             
        enddo
-       totalU = totalU/20000
-       C = (total2U - (totalU * totalU)) / (kB * ltemp * ltemp * 20000 *20000)
+       totalU = totalU/200000
+       C = (total2U - (totalU * totalU)) / (kB * ltemp * ltemp * 200000 *200000)
        write(*,*) ltemp, totalU, C
 
        deltaU = 0.0
