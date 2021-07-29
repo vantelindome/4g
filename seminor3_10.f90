@@ -3,7 +3,7 @@ program Ising2D
    integer :: nsite,i,k,im,ip,km,kp
    parameter(nsite = 10)
    integer :: TT
-   parameter(TT=30)
+   parameter(TT=30000)
    real :: ispin(nsite,nsite),xx,ifield
    real :: AJ=1.0,B=0.0
    real :: iU0=0.0
@@ -12,7 +12,7 @@ program Ising2D
    real :: Ei,Ek
    real :: H,deltaU, U=0.0, totalU, total2U
    integer :: x
-   real :: C,kB=1.0
+   real :: C=0,kB=1.0
    real :: bratio
            
       ! 初期スピン配置の生成
@@ -108,7 +108,7 @@ program Ising2D
              endif
           endif   
    
-          if(try>10) then
+          if(try>10000) then
               U = U + deltaU
               totalU = totalU + U
               total2U = total2U + U * U 
@@ -117,7 +117,7 @@ program Ising2D
        enddo
        
        C = (total2U - (totalU * totalU)) / (kB * ltemp * ltemp)
-       write(*,*) ltemp, totalU, C
+       write(*,*) ltemp, totalU/20000, C/(20000*20000)
 
        deltaU = 0
        U = 0
