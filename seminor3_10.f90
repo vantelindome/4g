@@ -10,7 +10,7 @@ program Ising2D
    integer :: ltemp,T=2
    integer :: try
    real :: Ei,Ek
-   real :: H,deltaU, U=0.0, totalU, total2U
+   real :: H,deltaU, U=0.0, totalU=0.0, total2U=0.0
    integer :: x
    real :: C=0,kB=1.0
    real :: bratio
@@ -115,9 +115,9 @@ program Ising2D
             
           endif             
        enddo
-       
-       C = (total2U - (totalU * totalU)) / (kB * ltemp * ltemp)
-       write(*,*) ltemp, totalU/20000, C/(20000*20000)
+       totalU = totalU/20000
+       C = (total2U - (totalU * totalU)) / (kB * ltemp * ltemp * 20000 *20000)
+       write(*,*) ltemp, totalU, C
 
        deltaU = 0
        U = 0
