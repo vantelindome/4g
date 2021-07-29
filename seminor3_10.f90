@@ -7,7 +7,7 @@ program Ising2D
    real :: ispin(nsite,nsite),xx,ifield
    real :: AJ=1.0,B=0.0
    real :: iU0=0.0
-   integer :: ltemp,T=2
+   integer :: ltemp,T=400
    integer :: try
    real :: Ei,Ek
    real :: H,deltaU, U=0.0, totalU=0.0, total2U=0.0
@@ -119,10 +119,10 @@ program Ising2D
        C = (total2U - (totalU * totalU)) / (kB * ltemp * ltemp * 20000 *20000)
        write(*,*) ltemp, totalU, C
 
-       deltaU = 0
-       U = 0
-       totalU = 0
-       total2U = 0
+       deltaU = 0.0
+       U = 0.0
+       totalU = 0.0
+       total2U = 0.0
 
        !終状態を次の温度についての初期状態とする
        do i=1,nsite
@@ -146,5 +146,4 @@ program Ising2D
     enddo
    enddo
 
-                 
-   end program Ising2D
+end program Ising2D
