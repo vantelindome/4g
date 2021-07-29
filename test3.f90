@@ -3,7 +3,7 @@ program Ising2D
     integer :: nsite,i,k,im,ip,km,kp
     parameter(nsite = 10)
     integer :: TT
-    parameter(TT=30)
+    parameter(TT=30000)
     real :: ispin(nsite,nsite),xx,ifield
     real :: AJ=1.0,B=0.0
     real :: iU0=0.0
